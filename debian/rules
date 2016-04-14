@@ -48,4 +48,4 @@ override_dh_gencontrol:
 	dh_gencontrol --remaining-packages
 
 %:
-	dh $@ --parallel --with autoreconf
+	dh $@

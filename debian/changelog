@@ -1,6 +1,7 @@
 libgcrypt20 (1.6.5-2~precise0+exo1) precise; urgency=medium
 
   * Backport for Precise.
+     + Remove dependency on automake, autoreconf, don't patch configure.
 
  -- Vincent Bernat <bernat@debian.org>  Thu, 14 Apr 2016 17:22:28 +0200
 

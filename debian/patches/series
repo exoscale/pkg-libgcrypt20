@@ -1,4 +1,3 @@
 12_lessdeps_libgcrypt-config.diff
 15_multiarchpath_in_-L.diff
 20_fedora_libgcrypt-1.6.3-aliasing.patch
-30_support_source_date_epoch.diff
