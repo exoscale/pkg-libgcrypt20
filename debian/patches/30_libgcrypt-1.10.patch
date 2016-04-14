@@ -1,0 +1,47 @@
+Index: libgcrypt-1.6.5/configure
+===================================================================
+--- libgcrypt-1.6.5.orig/configure
++++ libgcrypt-1.6.5/configure
+@@ -2698,7 +2698,7 @@ LIBGCRYPT_CONFIG_API_VERSION=1
+ 
+ # If you change the required gpg-error version, please remove
+ # unnecessary error code defines in src/gcrypt-int.h.
+-NEED_GPG_ERROR_VERSION=1.11
++NEED_GPG_ERROR_VERSION=1.10
+ 
+ PACKAGE=$PACKAGE_NAME
+ VERSION=$PACKAGE_VERSION
+Index: libgcrypt-1.6.5/configure.ac
+===================================================================
+--- libgcrypt-1.6.5.orig/configure.ac
++++ libgcrypt-1.6.5/configure.ac
+@@ -67,7 +67,7 @@ LIBGCRYPT_CONFIG_API_VERSION=1
+ 
+ # If you change the required gpg-error version, please remove
+ # unnecessary error code defines in src/gcrypt-int.h.
+-NEED_GPG_ERROR_VERSION=1.11
++NEED_GPG_ERROR_VERSION=1.10
+ 
+ PACKAGE=$PACKAGE_NAME
+ VERSION=$PACKAGE_VERSION
+Index: libgcrypt-1.6.5/src/gcrypt-int.h
+===================================================================
+--- libgcrypt-1.6.5.orig/src/gcrypt-int.h
++++ libgcrypt-1.6.5/src/gcrypt-int.h
+@@ -28,7 +28,15 @@
+ #include "types.h"
+ 
+ /* These error codes are used but not defined in the required
+-   libgpg-error 1.11.  Define them here. */
++   libgpg-error 1.10.  Define them here. */
++#if GPG_ERROR_VERSION_NUMBER < 0x010b00  /* 1.11 */
++# define GPG_ERR_NO_KEYSERVER       186
++# define GPG_ERR_INV_CURVE          187
++# define GPG_ERR_UNKNOWN_CURVE      188
++# define GPG_ERR_DUP_KEY            189
++# define GPG_ERR_AMBIGUOUS          190
++#endif
++
+ #if GPG_ERROR_VERSION_NUMBER < 0x010c00  /* 1.12 */
+ # define GPG_ERR_NO_CRYPT_CTX	    191
+ # define GPG_ERR_WRONG_CRYPT_CTX    192
